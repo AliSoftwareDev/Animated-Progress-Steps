@@ -1,10 +1,16 @@
-@import url('https://fonts.googleapis.com/css2?family=Herr+Von+Muellerhoff&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Story+Script&display=swap');
+
+:root {
+    --line-border-fill: #38573d;
+    --line-border-empty: #5995ed;
+}
 
 *{
-  box-sizing: border-box;  
+    box-sizing: border-box;
 }
 body {
-    font-family: 'Herr Von Muellerhoff', cursive;
+    font-family: 'Story+Script', sans-serif;
+    background-color:burlywood;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -12,44 +18,73 @@ body {
     margin: 0;
     overflow: hidden;
 }
-.container{
+
+.container {
+    text-align: center;
+}
+.progress-container {
     display: flex;
-    width: 90vw;
-    }
-    .panel{
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-        height: 50vh;
-        border-radius: 50px;
-        cursor: pointer;
-        flex: 0.5;
-        margin: 10px;
-        position: relative;
-        transition: flex 0.7s ease-in;
-        }
-        .panel h3{
-            font-size: 24px;
-            position: absolute;
-            bottom: 28px;
-            left: 50%;
-            transform: translateX(-50%);
-            margin: 0px;
-            opacity: 0;        
-        }
-        .panel.active{
-            flex: 5;
-        }
-        .panel.active h3 {
-            text-decoration: underline;
-            opacity: 1;
-            transition: opacity 0.3s ease-in 0.4s;
-        }
-        @media (max-width: 600px) {
-            .container {
-                width: 100vw;
-            }
-            .panel:nth-of-type(4),.panel:nth-of-type(5){
-                display: none;
-            }
-        }
+    justify-content: space-between;
+    position: relative;
+    margin-bottom: 30px;
+    width: 350px;
+    max-width: 100%;
+}
+.progress-container::before {
+    content: '';
+    background-color: var(--line-border-empty);
+    height: 4px;
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    z-index: -1;
+    transition: 0.4s ease;
+}
+.progress {
+    background-color: var(--line-border-fill);
+    height: 4px;
+    width: 50%;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    z-index: -1;
+    transition: 0.4s ease;
+}
+.circle {
+    background-color: chocolate;
+    border-radius: 50%;
+    height: 30px;
+    width: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 3px solid var(--line-border-empty);
+    transition: 0.4s ease;
+}
+
+.circle.active {
+    border-color: var(--line-border-fill);
+}
+.btn {
+    background-color: var(--line-border-fill);
+    color: aqua;
+    border: 0;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    padding: 8px 20px;
+    font-size: 14px;
+    margin: 8px;
+}
+.btn:active{
+    transform: scale(0.90);
+}
+.btn:focus {
+    outline: 0;
+}
+.btn:disabled {
+    background-color: var(--line-border-empty);
+}
